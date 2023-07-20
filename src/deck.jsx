@@ -12,28 +12,27 @@ const [currentCard,setCurrentCard] = useState({'suit':'blank','optionOne':'Click
 
 const drawCard = ()=>{
     if(Object.keys(hearts).length > 0){
-    let card = Math.floor(Math.random() * Object.keys(hearts).length)
-        setCurrentCard({'classes':`hearts`,...hearts[Object.keys(hearts)[card]]})
-            delete hearts[Object.keys(hearts)[card]]
+    let randomNum = Math.floor(Math.random() * Object.keys(hearts).length)
+        setCurrentCard({'classes':`hearts`,...hearts[Object.keys(hearts)[randomNum]]})
+            delete hearts[Object.keys(hearts)[randomNum]]
 
     } else if(Object.keys(diamonds).length > 0){
-    let card = Math.floor(Math.random() * Object.keys(diamonds).length)
-        setCurrentCard({'classes':`diamonds`,...diamonds[Object.keys(diamonds)[card]]})
-            delete diamonds[Object.keys(diamonds)[card]]
+    let randomNum = Math.floor(Math.random() * Object.keys(diamonds).length)
+        setCurrentCard({'classes':`diamonds`,...diamonds[Object.keys(diamonds)[randomNum]]})
+            delete diamonds[Object.keys(diamonds)[randomNum]]
 
     } else if(Object.keys(clubs).length > 0){
-    let card = Math.floor(Math.random() * Object.keys(clubs).length)
-        setCurrentCard({'classes':`clubs`,...clubs[Object.keys(clubs)[card]]})
-            delete clubs[Object.keys(clubs)[card]]
+    let randomNum = Math.floor(Math.random() * Object.keys(clubs).length)
+        setCurrentCard({'classes':`clubs`,...clubs[Object.keys(clubs)[randomNum]]})
+            delete clubs[Object.keys(clubs)[randomNum]]
     } else {
-    let card = Math.floor(Math.random() * Object.keys(spades).length)
-        setCurrentCard({'classes':`spades`,...spades[Object.keys(spades)[card]]})
-        if(Object.keys(spades)[card] === 'king'){
+    let randomNum = Math.floor(Math.random() * Object.keys(spades).length)
+        setCurrentCard({'classes':`spades`,...spades[Object.keys(spades)[randomNum]]})
+        if(Object.keys(spades)[randomNum] === 'king'){
             setSpades({})
         }
-            delete spades[Object.keys(spades)[card]]
+            delete spades[Object.keys(spades)[randomNum]]
     }
-    console.log(currentCard)
 }
 if(Object.keys(spades).length === 0){
     return  (<p>{currentCard.optionOne}</p>)
