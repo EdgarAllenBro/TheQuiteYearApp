@@ -33,5 +33,10 @@ main{
   display: flex;
   justify-content: center;
   flex-direction: column;
-  width: 200px;
+  width: 230px;
+  height: 300px;
+  border: 2px black solid;
+  padding: 5px;
+  border-radius: 5%;
+  margin:40px;
 }
