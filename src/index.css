@@ -34,19 +34,18 @@ main{
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 230px;
-  height: 300px;
+  width: 225px;
+  height: 360px;
   border: 2px black solid;
-  padding: 5px;
+  padding: 5px 20px;
   border-radius: 5%;
   margin:40px;
   box-shadow: 5px 2px 5px black;
+  background-image: url(../images/PlayingCard-Wood-Blank.jpeg);
+  background-size:cover;
+  background-position: center;
+  text-align: center;
 }
 
-.hearts,.diamonds {
-  background-color: rgb(255, 60, 60);
-}
-.clubs,.spades {
-  background-color: black;
-  color: white;
+.hearts,.diamonds,.clubs,.spades {
 }
