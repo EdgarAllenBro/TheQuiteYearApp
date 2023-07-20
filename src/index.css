@@ -32,6 +32,7 @@ main{
 #currentCard {
   display: flex;
   justify-content: center;
+  align-items: center;
   flex-direction: column;
   width: 230px;
   height: 300px;
@@ -39,4 +40,13 @@ main{
   padding: 5px;
   border-radius: 5%;
   margin:40px;
+  box-shadow: 5px 2px 5px black;
+}
+
+.hearts,.diamonds {
+  background-color: rgb(255, 60, 60);
+}
+.clubs,.spades {
+  background-color: black;
+  color: white;
 }
