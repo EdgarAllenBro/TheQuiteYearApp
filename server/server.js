@@ -10,13 +10,17 @@ app.use(express.static('public'))
 app.use(express.static('src'))
 
 app.post('/cards', (req,res)=>{
-    console.log(req.body)
-    games.push(req.body)
+    let index = games.findIndex(e=>e.gameId === req.body.gameId)
+    if(index === -1){
+        games.push(req.body)
+    } else {
+        games.splice(index,1,req.body)
+    }
     res.status(200).send('cards saved your code is '+ req.body.gameId)
 })
 app.get('/cards',async (req,res)=>{
     let newId = Math.random().toString(36).substring(2,7)
- let deck = await axios.get('http://localhost:5050/cards').then((res)=>res.data)
+ let deck = await axios.get('http://107.23.44.87:5050/cards').then((res)=>res.data)
  deck.gameId = newId
  console.log(deck)
 res.status(200).send(deck)
@@ -29,6 +33,12 @@ app.get('/cards/:gameId', (req,res)=>{
     }else{
     res.status(200).send(deck[0])
     }
+})
+
+app.delete('/gameOver/:gameId', (req,res)=>{
+    let index = games.findIndex(e=>e.gameId === req.body.gameId)
+    games.splice(index,1)
+    res.status(200).send('Game Over')
 })
 
 

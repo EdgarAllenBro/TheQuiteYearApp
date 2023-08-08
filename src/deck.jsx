@@ -13,7 +13,8 @@ const [currentCard,setCurrentCard] = useState({'suit':'blank','optionOne':'Draw'
 
 const submitOption = (evt)=>{
 let choice = evt.target.innerHTML
-setChoices([...choices,choice])
+if(choice != "Draw"){
+setChoices([...choices,choice])}
 drawCard()
 }
 const saveDeck = ()=>{
@@ -57,6 +58,7 @@ const drawCard = ()=>{
     }
 }
 if(Object.keys(spades).length === 0){
+    axios.delete(`http://localhost:8080/gameOver/${gameId}`).then(res=>console.log(res.data))
     return  (<p>{currentCard.optionOne}</p>)
 }
 return (
@@ -66,8 +68,13 @@ return (
 <p hidden={!currentCard.optionTwo}>Or</p>
 <p className='option' id='Two' onClick={submitOption}>{currentCard.optionTwo}</p>
 </div>
-
+<div id='choices'>
 <button onClick={saveDeck}>Save?</button>
+<h2>Your Choices</h2>
+    {choices.map((e)=>{
+       return <p>{e}</p>
+    })}
+</div>
     </>
 )
 
