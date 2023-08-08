@@ -3,7 +3,7 @@ import Deck from './deck';
 import {useState,useEffect} from 'react'
 import axios from 'axios';
 
-let SERVER_URL = "http://localhost:8080"
+let SERVER_URL = "http://107.23.44.87:8080"
 function App() {
 
 const [landing,setLanding] = useState(true)

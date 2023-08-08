@@ -28,7 +28,7 @@ const saveDeck = ()=>{
         choices: choices
     }
 
-axios.post('http://localhost:8080/cards', body).then((res)=>{
+axios.post('http://107.23.44.87:8080/cards', body).then((res)=>{
     alert(res.data)})
 
 }
@@ -58,7 +58,7 @@ const drawCard = ()=>{
     }
 }
 if(Object.keys(spades).length === 0){
-    axios.delete(`http://localhost:8080/gameOver/${gameId}`).then(res=>console.log(res.data))
+    axios.delete(`http://107.23.44.87:8080/gameOver/${gameId}`).then(res=>console.log(res.data))
     return  (<p>{currentCard.optionOne}</p>)
 }
 return (
