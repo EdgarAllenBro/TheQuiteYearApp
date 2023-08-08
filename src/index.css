@@ -49,3 +49,7 @@ main{
 
 .hearts,.diamonds,.clubs,.spades {
 }
+.option:hover{
+  color: whitesmoke;
+  /* box-shadow: 2px 1px 2px black; */
+}

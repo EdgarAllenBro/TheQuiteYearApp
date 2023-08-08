@@ -1,5 +1,5 @@
 import {useState} from 'react'
-
+import axios from 'axios'
 
 export default function Deck(props){
     // console.log(Object.keys(props.deck.hearts).length)
@@ -7,8 +7,30 @@ const  [hearts, setHearts] = useState(props.deck.hearts)
 const  [diamonds, setDiamonds] = useState(props.deck.diamonds)
 const  [clubs, setClubs] = useState(props.deck.clubs)
 const  [spades, setSpades] = useState(props.deck.spades)
+const  [gameId, setId] = useState(props.gameId)
+const  [choices, setChoices] = useState(props.deck.choices || [])
+const [currentCard,setCurrentCard] = useState({'suit':'blank','optionOne':'Draw'})
 
-const [currentCard,setCurrentCard] = useState({'suit':'blank','optionOne':'Click card to draw'})
+const submitOption = (evt)=>{
+let choice = evt.target.innerHTML
+setChoices([...choices,choice])
+drawCard()
+}
+const saveDeck = ()=>{
+    console.log(choices)
+ let body = {
+        hearts: hearts,
+        diamonds: diamonds,
+        clubs:clubs,
+        spades: spades,
+        gameId: gameId,
+        choices: choices
+    }
+
+axios.post('http://localhost:8080/cards', body).then((res)=>{
+    alert(res.data)})
+
+}
 
 const drawCard = ()=>{
     if(Object.keys(hearts).length > 0){
@@ -39,11 +61,13 @@ if(Object.keys(spades).length === 0){
 }
 return (
     <>
-<div onClick={drawCard} className={currentCard.classes} id="currentCard">
-<p>{currentCard.optionOne}</p>
+<div className={currentCard.classes} id="currentCard">
+<p className='option' id='One' onClick={submitOption}>{currentCard.optionOne}</p>
 <p hidden={!currentCard.optionTwo}>Or</p>
-<p>{currentCard.optionTwo}</p>
+<p className='option' id='Two' onClick={submitOption}>{currentCard.optionTwo}</p>
 </div>
+
+<button onClick={saveDeck}>Save?</button>
     </>
 )
 
