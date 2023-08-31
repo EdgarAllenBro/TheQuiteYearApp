@@ -20,7 +20,7 @@ app.post('/cards', (req,res)=>{
 })
 app.get('/cards',async (req,res)=>{
     let newId = Math.random().toString(36).substring(2,7)
- let deck = await axios.get('http://107.23.44.87:5050/cards').then((res)=>res.data)
+ let deck = await axios.get('http://54.205.47.162/:5050/cards').then((res)=>res.data)
  deck.gameId = newId
  console.log(deck)
 res.status(200).send(deck)
