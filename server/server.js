@@ -28,7 +28,7 @@ res.status(200).send(deck)
 app.get('/cards/:gameId', (req,res)=>{
     let {gameId} = req.params
     let deck = games.filter((e)=> e.gameId = gameId )
-    if(deck === []){
+    if(deck[0] === undefined){
         res.status(200).send(false)
     }else{
     res.status(200).send(deck[0])
